@@ -8,3 +8,7 @@ __pycache__/
 uploads/
 motion-starter/node_modules/
 motion-starter/out/
+.build/as/clips/
+.build/as/poster/
+.build/vid/clips/
+.build/vid/raw_*

@@ -1,0 +1,392 @@
+[
+{
+"nn": "01",
+"slug": "whiteboard",
+"id": "01-whiteboard",
+"name": "Whiteboard",
+"family": "Drawn on a board",
+"look": "A marker hand draws black lines on a white board, then fills the cup with colour.",
+"text": "",
+"file": "originals/originals.tsx"
+},
+{
+"nn": "02",
+"slug": "chalkboard",
+"id": "02-chalkboard",
+"name": "Chalkboard",
+"family": "Drawn on a board",
+"look": "Dusty coloured chalk on a green-black board in a wooden frame.",
+"text": "",
+"file": "drawn/boards.tsx"
+},
+{
+"nn": "05",
+"slug": "notepad-doodle",
+"id": "05-notepad-doodle",
+"name": "Notepad doodle",
+"family": "Drawn on a board",
+"look": "Blue and red ballpoint doodles on lined, spiral-bound notebook paper.",
+"text": "",
+"file": "drawn/boards.tsx"
+},
+{
+"nn": "06",
+"slug": "blueprint",
+"id": "06-blueprint",
+"name": "Blueprint",
+"family": "Drawn on a board",
+"look": "White technical drawing on blueprint blue, with grid, dimensions and a title block.",
+"text": "",
+"file": "drawn/boards.tsx"
+},
+{
+"nn": "08",
+"slug": "hand-drawn",
+"id": "08-hand-drawn",
+"name": "Hand-drawn pencil sketch",
+"family": "Hand-drawn and painted",
+"look": "Wobbly graphite lines and soft shading on warm paper, drawn on twos.",
+"text": "",
+"file": "originals/originals.tsx"
+},
+{
+"nn": "09",
+"slug": "urban-sketch",
+"id": "09-urban-sketch",
+"name": "Urban sketch",
+"family": "Hand-drawn and painted",
+"look": "Loose ink lines with watercolour washes and a street in the background.",
+"text": "",
+"file": "drawn/paint.tsx"
+},
+{
+"nn": "10",
+"slug": "crayon-book",
+"id": "10-crayon-book",
+"name": "Crayon book",
+"family": "Hand-drawn and painted",
+"look": "Waxy crayon strokes like a child's colouring book, with a sun and crayons.",
+"text": "",
+"file": "drawn/paint.tsx"
+},
+{
+"nn": "11",
+"slug": "watercolour",
+"id": "11-watercolour",
+"name": "Watercolour",
+"family": "Hand-drawn and painted",
+"look": "Soft wet-edged washes and blooms on textured paper.",
+"text": "",
+"file": "drawn/paint.tsx"
+},
+{
+"nn": "13",
+"slug": "one-line",
+"id": "13-one-line",
+"name": "One line",
+"family": "Hand-drawn and painted",
+"look": "A single unbroken white line draws everything on a bold flat colour.",
+"text": "",
+"file": "drawn/line.tsx"
+},
+{
+"nn": "16",
+"slug": "cel-line-boil",
+"id": "16-cel-line-boil",
+"name": "Cel line boil",
+"family": "Hand-drawn and painted",
+"look": "Classic frame-by-frame cel look: ink outlines that jitter (boil) every few frames.",
+"text": "",
+"file": "drawn/line.tsx"
+},
+{
+"nn": "17",
+"slug": "flat-vector",
+"id": "17-flat-vector",
+"name": "Flat vector",
+"family": "Cartoon",
+"look": "Clean 2D flat shapes, bright colours and no outlines, like an explainer app.",
+"text": "",
+"file": "toon-and-paper/toon.tsx"
+},
+{
+"nn": "21",
+"slug": "cel-anime-80s",
+"id": "21-cel-anime-80s",
+"name": "80s cel anime",
+"family": "Cartoon",
+"look": "Hard cel shading, a sunset sky and a city skyline, like an 80s anime still.",
+"text": "",
+"file": "toon-and-paper/toon.tsx"
+},
+{
+"nn": "22",
+"slug": "stick-figure",
+"id": "22-stick-figure",
+"name": "Stick figure",
+"family": "Cartoon",
+"look": "A white round-head stick figure pours the chai under one hanging lamp.",
+"text": "",
+"file": "toon-and-paper/toon.tsx"
+},
+{
+"nn": "23",
+"slug": "cut-out",
+"id": "23-cut-out",
+"name": "Cut-out collage",
+"family": "Paper and puppets",
+"look": "Paper shapes with torn edges and drop shadows, moved like a cut-out puppet.",
+"text": "",
+"file": "originals/originals.tsx"
+},
+{
+"nn": "24",
+"slug": "red-papercut",
+"id": "24-red-papercut",
+"name": "Red papercut",
+"family": "Paper and puppets",
+"look": "Red cut paper with lacy patterns and flowers on a warm background.",
+"text": "",
+"file": "toon-and-paper/paper.tsx"
+},
+{
+"nn": "25",
+"slug": "paper-pop-up",
+"id": "25-paper-pop-up",
+"name": "Paper pop-up",
+"family": "Paper and puppets",
+"look": "A pop-up book page: layered card that stands up with folds and shadows.",
+"text": "",
+"file": "toon-and-paper/paper.tsx"
+},
+{
+"nn": "27",
+"slug": "shadow-puppet",
+"id": "27-shadow-puppet",
+"name": "Shadow puppet",
+"family": "Paper and puppets",
+"look": "Black puppets with cut-out holes on rods, lit from behind on a glowing screen.",
+"text": "",
+"file": "toon-and-paper/paper.tsx"
+},
+{
+"nn": "28",
+"slug": "woodcut",
+"id": "28-woodcut",
+"name": "Woodcut",
+"family": "Print and craft",
+"look": "Black and white relief print with gouged lines and rough edges.",
+"text": "",
+"file": "print-and-abstract/print.tsx"
+},
+{
+"nn": "29",
+"slug": "engraving",
+"id": "29-engraving",
+"name": "Engraving",
+"family": "Print and craft",
+"look": "Fine hatched lines like an old banknote, in a green ornamental frame.",
+"text": "",
+"file": "print-and-abstract/print.tsx"
+},
+{
+"nn": "31",
+"slug": "silkscreen-poster",
+"id": "31-silkscreen-poster",
+"name": "Silkscreen poster",
+"family": "Print and craft",
+"look": "Flat ink layers, sunburst rays and slight misregistration, like a screen-printed poster.",
+"text": "",
+"file": "print-and-abstract/print.tsx"
+},
+{
+"nn": "33",
+"slug": "ukiyo-e",
+"id": "33-ukiyo-e",
+"name": "Ukiyo-e",
+"family": "Print and craft",
+"look": "Flat colour and ink outlines like a Japanese woodblock print, with clouds and blossom.",
+"text": "",
+"file": "print-and-abstract/craft.tsx"
+},
+{
+"nn": "34",
+"slug": "art-deco",
+"id": "34-art-deco",
+"name": "Art deco",
+"family": "Print and craft",
+"look": "Gold lines, stepped frames and sunrays on deep teal, like a 1920s poster.",
+"text": "",
+"file": "print-and-abstract/craft.tsx"
+},
+{
+"nn": "35",
+"slug": "stained-glass",
+"id": "35-stained-glass",
+"name": "Stained glass",
+"family": "Print and craft",
+"look": "Coloured glass panes and black lead lines in an arched window.",
+"text": "",
+"file": "print-and-abstract/craft.tsx"
+},
+{
+"nn": "39",
+"slug": "memphis-diorama",
+"id": "39-memphis-diorama",
+"name": "Memphis diorama",
+"family": "Graphic and explainer",
+"look": "80s Memphis design: loud patterns, squiggles and a checkered floor in a little room.",
+"text": "",
+"file": "graphic-and-cinema/graphic-and-cinema.tsx"
+},
+{
+"nn": "51",
+"slug": "sticker-explainer",
+"id": "51-sticker-explainer",
+"name": "Sticker explainer",
+"family": "Graphic and explainer",
+"look": "Die-cut stickers with white borders that pop in, with bold word stickers.",
+"text": "word stickers: POUR, FILL, READY",
+"file": "info/info.tsx"
+},
+{
+"nn": "52",
+"slug": "math-diagram",
+"id": "52-math-diagram",
+"name": "Math diagram",
+"family": "Graphic and explainer",
+"look": "A chalk-on-navy maths explainer: angles, points, a dotted pour path and a fill graph.",
+"text": "maths labels: θ = 38°, A, B, r, h(t), A sin(ωz)",
+"file": "info/info.tsx"
+},
+{
+"nn": "57",
+"slug": "low-poly-island",
+"id": "57-low-poly-island",
+"name": "Low-poly island",
+"family": "3D look",
+"look": "Faceted low-poly 3D: the cup sits on a tiny island with palm trees in a polygon sea.",
+"text": "",
+"file": "3d/island-and-bricks.ts"
+},
+{
+"nn": "58",
+"slug": "brick-toy",
+"id": "58-brick-toy",
+"name": "Brick toy",
+"family": "3D look",
+"look": "Everything built from toy bricks and studs on a green baseplate.",
+"text": "",
+"file": "3d/island-and-bricks.ts"
+},
+{
+"nn": "59",
+"slug": "glass-product",
+"id": "59-glass-product",
+"name": "Glass product",
+"family": "3D look",
+"look": "A clear glass kettle and cup lit like a product shot, with refraction and glow.",
+"text": "",
+"file": "3d/glass.ts"
+},
+{
+"nn": "62",
+"slug": "claymation",
+"id": "62-claymation",
+"name": "Claymation",
+"family": "3D look",
+"look": "Lumpy plasticine shapes with fingerprints, stepped like stop-motion.",
+"text": "",
+"file": "3d/clay-and-lidar.ts"
+},
+{
+"nn": "80",
+"slug": "lidar-survey",
+"id": "80-lidar-survey",
+"name": "Lidar survey",
+"family": "3D look",
+"look": "A glowing 3D point cloud, like a laser scan, in blue and gold.",
+"text": "",
+"file": "3d/clay-and-lidar.ts"
+},
+{
+"nn": "70",
+"slug": "silent-film",
+"id": "70-silent-film",
+"name": "Silent film",
+"family": "Cinema eras",
+"look": "Black and white 1920s film: grain, flicker, scratches and a stage curtain.",
+"text": "intertitles: A CUP OF CHAI / Piping hot!",
+"file": "graphic-and-cinema/graphic-and-cinema.tsx"
+},
+{
+"nn": "71",
+"slug": "newsreel",
+"id": "71-newsreel",
+"name": "Newsreel",
+"family": "Cinema eras",
+"look": "Sepia 1940s newsreel with a slanted headline banner and film damage.",
+"text": "headlines: THE POUR BEGINS / CUP FILLS FAST / STEAM RISES, and a CHAI! title card",
+"file": "graphic-and-cinema/graphic-and-cinema.tsx"
+},
+{
+"nn": "64",
+"slug": "pixel-art-rpg",
+"id": "64-pixel-art-rpg",
+"name": "Pixel art RPG",
+"family": "Screens and science",
+"look": "Chunky pixel sprites and stepped motion in a cosy room, with a game dialogue box.",
+"text": "dialogue box: THE KETTLE ARRIVES! / IT POURS HOT CHAI... / THE KULHAD IS FULL!",
+"file": "screens/pixel.tsx"
+},
+{
+"nn": "81",
+"slug": "microscope",
+"id": "81-microscope",
+"name": "Microscope",
+"family": "Screens and science",
+"look": "The chai seen through a microscope: a round lens view of bubbles and specks.",
+"text": "",
+"file": "screens/microscope.tsx"
+},
+{
+"nn": "84",
+"slug": "hologram-hud",
+"id": "84-hologram-hud",
+"name": "Hologram HUD",
+"family": "Screens and science",
+"look": "A cyan sci-fi hologram with wireframes, readouts and a fill gauge.",
+"text": "HUD labels: TILT, POUR, FILL, STEAM, CUP LEVEL, HOT and a % readout",
+"file": "screens/hologram.tsx"
+},
+{
+"nn": "85",
+"slug": "circuit-board",
+"id": "85-circuit-board",
+"name": "Circuit board",
+"family": "Screens and science",
+"look": "A green circuit board where the chai flows along glowing copper traces.",
+"text": "board labels: CHAI, KETTLE, POUR, KULHAD, FILL",
+"file": "screens/circuit.tsx"
+},
+{
+"nn": "87",
+"slug": "liquid-motion",
+"id": "87-liquid-motion",
+"name": "Liquid motion",
+"family": "Abstract",
+"look": "Smooth, bouncy, glossy shapes that stretch and settle like liquid.",
+"text": "",
+"file": "print-and-abstract/abstract.tsx"
+},
+{
+"nn": "89",
+"slug": "generative-abstract",
+"id": "89-generative-abstract",
+"name": "Generative abstract",
+"family": "Abstract",
+"look": "Thousands of tiny strokes in a flow field that form the kettle, pour and cup.",
+"text": "",
+"file": "print-and-abstract/abstract.tsx"
+}
+]

@@ -3,14 +3,19 @@ import sys, json
 sys.path.insert(0,".build")
 from design import head, topbar, ICONS, CHEV
 from vids import clip as VCLIP, poster as VPOST
+import asdata as A
 
 imgs = json.load(open(".build/imgs.json"))["tiny"]
-PICK = [1, 7, 11, 16, 24, 27, 15, 9]
+PICK = [1, 7, 16, 24]
 thumbs = "".join(
     f'<a class="mini" href="کاتالوگ-۳۰-سبک.html" title="سبک {i:02d}">'
     f'<video muted loop playsinline preload="none" poster="{VPOST(i)}" data-src="{VCLIP(i)}"></video>'
     f'<span class="mplay">▶</span></a>'
-    for i in PICK)
+    for i in PICK) + "".join(
+    f'<a class="mini" href="۳۹-سبک-کدی.html" title="سبک کدی {nn}">'
+    f'<video muted loop playsinline preload="none" poster="{A.poster(nn)}" data-src="{A.clip(nn)}"></video>'
+    f'<span class="mplay">▶</span></a>'
+    for nn in ["01", "33", "24", "64"])
 
 EXTRA = """
 .hero{max-width:1280px;margin:0 auto;padding:56px 24px 8px;text-align:center}
@@ -81,7 +86,7 @@ EXTRA = """
 
 CONTENT = f'''
 <section class="hero">
-  <div class="eyebrow"><em></em> ۱۳ نمونه‌ی ساخته‌شده · ۳۰ سبک · فارسی و RTL</div>
+  <div class="eyebrow"><em></em> ۳۰ زبان بصری + ۳۹ سبک کدی · فارسی و RTL</div>
   <h1>موشن‌گرافیک فارسی، با <em>حرف زدن</em> ساخته می‌شود</h1>
   <p class="lead">
     یک راهنمای کامل برای ساخت ویدیوی موشن با ایجنت آراِنا و Remotion — بدون خط کد.
@@ -112,12 +117,12 @@ CONTENT = f'''
          سبک‌هایت را انتخاب کن و پرامپت آماده بگیر.</p>
       <div class="tags"><span>30 styles</span></div>
     </a>
-    <a href="گزارش-سبک‌ها-و-ابزارهای-موشن.md">
-      <div class="ico">{ICONS['spark']}</div>
-      <h3>گزارش تحقیق</h3>
-      <p>۲۲ سبک دیگر که می‌شود اضافه کرد، به‌همراه ابزارهای مکمل: پکیج‌های رسمی،
-         کتابخانه‌های کامپوننت و موتورهای جایگزین.</p>
-      <div class="tags"><span>MIT · 2026</span></div>
+    <a href="۳۹-سبک-کدی.html">
+      <div class="ico">{ICONS['film']}</div>
+      <h3>۳۹ سبک کدی</h3>
+      <p>سبک‌هایی که کدشان نوشته شده و همان لحظه رندر می‌شوند: آبرنگ، اوکیویو، وودکات،
+         شیشهٔ رنگی، لیدار… هر کارت، رندر واقعی همان سبک.</p>
+      <div class="tags"><span>MIT · 39</span></div>
     </a>
   </div>
 
@@ -145,7 +150,7 @@ CONTENT = f'''
   <div class="dark-cta">
     <div>
       <h2>آماده‌ای اولین موشن را بسازی؟</h2>
-      <p>حدود ۱۰ دقیقه وقت می‌برد. فقط یک جمله پیام و یک سبک لازم داری.</p>
+      <p>حدود ۱۰ دقیقه وقت می‌برد. فقط یک جمله پیام و یک سبک لازم داری — یا یکی از ۳۹ سبک آماده را بردار.</p>
     </div>
     <a class="btn accent btn-lg" href="آموزش-ساخت-موشن.html#s4">رفتن به پرامپت آماده</a>
   </div>

@@ -85,6 +85,7 @@ SIDEBAR = f'''
     <div class="side-label">{ICONS['grid']} مرجع</div>
     <div class="side">
       {side_item("کاتالوگ ۳۰ سبک", "کاتالوگ-۳۰-سبک.html", cnt="۳۰")}
+      {side_item("۳۹ سبک کدی", "۳۹-سبک-کدی.html", cnt="۳۹", pill="مهم")}
       <a href="#fix">عیب‌یابی رایج</a>
       <a href="#faq">پرسش‌های متداول</a>
     </div>
@@ -259,6 +260,118 @@ CONTENT = f'''
     {mock("p5_timeline","تایم‌لاین صحنه‌ها و مرحله‌ی رندر")}
   """)}
 
+
+  <hr class="hr">
+
+  <h2 id="as">۳۹ سبک کدی — وقتی می‌خواهی سبک «آمادهٔ اجرا» باشد</h2>
+  <p>
+    تا اینجا با <a href="کاتالوگ-۳۰-سبک.html">۳۰ زبان بصری</a> کار کردیم: هر سبک یک <b>توصیف</b> است و
+    ایجنت باید از صفر آن را با کد بسازد. کنار آن، یک مجموعهٔ آماده هم هست:
+    ریپوی <b><span style="direction:ltr">deenukhan/animation-styles</span></b> با <b>۳۹ سبک که کدشان نوشته شده</b> —
+    وای‌بورد، تخته‌سیاه، آبرنگ، وودکات، اوکیویو، شیشهٔ رنگی، لیدار، برد مدار و…
+  </p>
+
+  <div class="cardrow" style="margin:18px 0">
+    <div>
+      <div class="ico">{ICONS['palette']}</div>
+      <h3>کاتالوگ ۳۰ سبک = نقشه</h3>
+      <p>زبان بصری را انتخاب می‌کنی و پرامپت می‌نویسی. آزادی کامل، ولی نتیجه بستگی به برداشت ایجنت دارد.</p>
+      <div class="tags"><span>prompt-first</span></div>
+    </div>
+    <div>
+      <div class="ico">{ICONS['film']}</div>
+      <h3>۳۹ سبک کدی = قالب</h3>
+      <p>کد سبک از قبل نوشته شده؛ ایجنت فقط قصهٔ تو را جایش می‌گذارد. نتیجه دقیق و تکرارپذیر.</p>
+      <div class="tags"><span>code-first</span></div>
+    </div>
+    <div>
+      <div class="ico">{ICONS['spark']}</div>
+      <h3>هر دو با هم</h3>
+      <p>از کاتالوگ انتخاب کن، اگر معادل کدی داشت شماره‌اش را بردار. ۱۴ سبک، معادل کدی دارند.</p>
+      <div class="tags"><span>14 matches</span></div>
+    </div>
+  </div>
+
+  <h3>قدم ۱ — نصب (یک‌بار، حدود ۵ دقیقه)</h3>
+  <p>پیش‌نیاز: <b>Node.js 18+</b> و <b>Git</b>. اگر با ایجنت کار می‌کنی، همین جمله را به او بده:</p>
+  <div class="pbox">
+    <div class="phead"><span>پرامپت نصب</span><span class="phint">copy-paste</span>
+      <button class="copy" data-target="p-install">کپی</button></div>
+    <pre id="p-install">این اسکیل را برایم نصب کن:
+https://github.com/deenukhan/animation-styles
+
+بعد از نصب چک کن که «npm run list» هر ۳۹ سبک را نشان بدهد،
+و به من بگو آماده است.</pre>
+  </div>
+  <p style="font-size:13px;color:var(--muted)">
+    نصب دستی هم ساده است (بعد از آن یک مرورگر بی‌سر ~۱۰۰MB فقط بار اول دانلود می‌شود):
+  </p>
+  <div class="pbox">
+    <div class="phead"><span>نصب دستی</span><span class="phint">terminal</span></div>
+    <pre dir="ltr" style="max-height:none;line-height:1.9">git clone --depth 1 https://github.com/deenukhan/animation-styles.git ~/.claude/skills/animation-styles
+cd ~/.claude/skills/animation-styles
+npm install
+npm run list    # باید ۳۹ سبک را نشان بدهد</pre>
+  </div>
+
+  <h3>قدم ۲ — سبک را انتخاب کن</h3>
+  <p>شمارهٔ سبک را از <a href="۳۹-سبک-کدی.html">صفحهٔ ۳۹ سبک کدی</a> بردار (هر کارت، رندر واقعی همان سبک است).
+     اگر مطمئن نیستی، در پرامپت بنویس «سه سبک پیشنهاد بده» و ایجنت از همان لیست انتخاب می‌کند.</p>
+
+  <h3>قدم ۳ — پرامپت اصلی (قصهٔ خودت، سبک آماده)</h3>
+  <div class="pbox">
+    <div class="phead"><span>پرامپت ساخت با اسکیل</span><span class="phint">copy-paste</span>
+      <button class="copy" data-target="p-skill">کپی</button></div>
+    <pre id="p-skill">با اسکیل animation-styles یک ویدیو ۵ ثانیه‌ای بساز.
+
+سبک: ۳۳ اوکیویو (ukiyo-e) — انتخاب دوم: ۱۱ آبرنگ
+قصه (شش بیت):
+۱. یک فنجان خالی روی میز چوبی
+۲. قوری از راست وارد می‌شود
+۳. چای می‌ریزد، فنجان پر می‌شود
+۴. بخار بلند می‌شود
+۵. متن «هر صبح، تازه» ظاهر می‌شود
+۶. قوری از کادر خارج می‌شود
+
+رنگ‌ها: #2A2521 ، #C6A57A ، #F2E7D3
+ابعاد: ۱۰۸۰×۱۳۵۰ (۴:۵) | ۳۰fps | بی‌صدا
+
+مسیر کار: اول جدول شش بیت را نشانم بده، بعد فایل شکل‌ها (shapes) را بساز،
+بعد کامپوننت سبک را، بعد چند فریم را چک کن و در آخر MP4 نهایی را بده.
+اگر سبک انتخاب‌شده برای این قصه مناسب نبود، قبل از شروع بگو.</pre>
+  </div>
+
+  <h3>قدم ۴ — تعویض سبک با یک جمله</h3>
+  <p>همان قصه، سبک دیگر. ایجنت شکل‌ها را نگه می‌دارد و فقط لایهٔ سبک را عوض می‌کند:</p>
+  <div class="pbox">
+    <div class="phead"><span>پرامپت تغییر سبک</span><span class="phint">copy-paste</span>
+      <button class="copy" data-target="p-restyle">کپی</button></div>
+    <pre id="p-restyle">همان قصه را نگه دار، حالا به سبک ۶۴ پیکسل‌آرت RPG بساز.
+فایل شکل‌ها را عوض نکن؛ فقط کامپوننت سبک را عوض کن و نسخهٔ قبلی را پاک نکن.
+اسم‌گذاری: chai-pixel</pre>
+  </div>
+
+  <h3>قدم ۵ — بیرون بردن پروژه از پوشهٔ اسکیل</h3>
+  <p>برای پروژهٔ واقعی، داخل اسکیل کار نکن. یک پوشهٔ مستقل بساز تا کد مال خودت باشد:</p>
+  <div class="pbox">
+    <div class="phead"><span>ساخت پروژهٔ مستقل</span><span class="phint">terminal</span></div>
+    <pre dir="ltr">node ~/.claude/skills/animation-styles/scripts/new-project.mjs animation-films
+cd animation-films &amp;&amp; npm install</pre>
+  </div>
+
+  <div class="note a" style="margin-top:14px"><span class="ic">!</span><div>
+    <b>سه محدودیت را بدان:</b>
+    ۱) قصهٔ پیش‌فرض همهٔ ۳۹ فیلم یکی است (کتری و کولاب) — باید قصهٔ خودت را بدهی.
+    ۲) سبک‌های سه‌بعدی (۵۷، ۵۸، ۵۹، ۶۲، ۸۰) با مش سه‌بعدی ساخته می‌شوند و تغییرشان سخت‌تر است؛
+    برای شروع از سبک‌های دو‌بعدی استفاده کن.
+    ۳) خروجی این اسکیل عمودی ۴:۵ است؛ برای ریلز ۹:۱۶ باید ابعاد را در پرامپت بدهی.
+  </div></div>
+
+  <div class="note g" style="margin-top:12px"><span class="ic">✓</span><div>
+    <b>مجوز:</b> این ریپو <b>MIT</b> است — استفادهٔ تجاری آزاد، تغییر آزاد، فقط ذکر منبع.
+    نمونه‌های خودمان با کلیپ واقعی همان سبک‌ها در <a href="۳۹-سبک-کدی.html">صفحهٔ ۳۹ سبک کدی</a> است.
+  </div></div>
+
   <hr class="hr">
   <h2 id="fix">عیب‌یابی — اگر چیزی درست نشد</h2>
   <table class="tbl">
@@ -288,7 +401,7 @@ CONTENT = f'''
       <h3 style="margin:0 0 4px">آماده‌ای؟</h3>
       <p style="margin:0;font-size:13.5px;color:var(--muted)">اول سبکت را از کاتالوگ انتخاب کن، بعد برگرد و پرامپت را پر کن.</p>
     </div>
-    <a class="btn accent" href="کاتالوگ-۳۰-سبک.html">دیدن ۳۰ سبک گرافیکی</a>
+    <a class="btn accent" href="۳۹-سبک-کدی.html">دیدن ۳۹ سبک کدی</a>
   </div>
 </div>'''
 
@@ -316,6 +429,7 @@ RAIL = '''
   <div class="rail-card">
     <h4>منابع</h4>
     <p><a href="کاتالوگ-۳۰-سبک.html" style="color:var(--accent);font-weight:600">کاتالوگ ۳۰ سبک</a><br>
+       <a href="۳۹-سبک-کدی.html" style="color:var(--accent);font-weight:600">۳۹ سبک کدی (animation-styles)</a><br>
        <a href="https://www.remotion.dev/docs" target="_blank" rel="noopener" style="color:var(--muted)">مستندات Remotion</a><br>
        <a href="https://arena.ai/agent" target="_blank" rel="noopener" style="color:var(--muted)">صفحه‌ی ایجنت آراِنا</a></p>
   </div>

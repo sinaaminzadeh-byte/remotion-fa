@@ -278,7 +278,8 @@ def topbar(active):
     first_active = "active" if active == "home" else ""
     links = [
         ("guide",   "راهنمای ساخت",    "آموزش-ساخت-موشن.html",     None),
-        ("catalog", "۳۰ سبک گرافیکی",  "کاتالوگ-۳۰-سبک.html",      "جدید"),
+        ("catalog", "۳۰ سبک گرافیکی",  "کاتالوگ-۳۰-سبک.html",      None),
+        ("styles",  "۳۹ سبک کدی",      "۳۹-سبک-کدی.html",          "جدید"),
         ("report",  "گزارش تحقیق",     "گزارش-سبک‌ها-و-ابزارهای-موشن.md", None),
     ]
     nav = f'''
@@ -288,6 +289,7 @@ def topbar(active):
           <a href="index.html">صفحه‌ی خانه <span class="k">H</span></a>
           <a href="آموزش-ساخت-موشن.html">راهنمای ساخت <span class="k">G</span></a>
           <a href="کاتالوگ-۳۰-سبک.html">کاتالوگ ۳۰ سبک <span class="k">C</span></a>
+          <a href="۳۹-سبک-کدی.html">۳۹ سبک کدی <span class="k">S</span></a>
           <a href="گزارش-سبک‌ها-و-ابزارهای-موشن.md">گزارش و منابع <span class="k">R</span></a>
         </div>
       </details>'''
@@ -386,7 +388,7 @@ document.addEventListener("DOMContentLoaded",function(){
   /* میان‌برهای صفحه‌کلید */
   document.addEventListener("keydown",function(e){
     if(e.target.matches("input,textarea"))return;
-    var map={h:"index.html",g:"آموزش-ساخت-موشن.html",c:"کاتالوگ-۳۰-سبک.html"};
+    var map={h:"index.html",g:"آموزش-ساخت-موشن.html",c:"کاتالوگ-۳۰-سبک.html",s:"۳۹-سبک-کدی.html"};
     var k=e.key.toLowerCase();
     if(map[k]&&!e.metaKey&&!e.ctrlKey){location.href=map[k];}
   });
