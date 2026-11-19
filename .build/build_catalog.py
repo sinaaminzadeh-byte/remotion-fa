@@ -2,6 +2,7 @@
 import json, sys
 sys.path.insert(0,".build")
 from design import head, topbar, toolbar, side_item, ICONS, CHEV
+from vids import clip as VCLIP, poster as VPOST, info as VINFO
 
 imgs = json.load(open(".build/imgs.json"))
 BIG  = {int(k):v for k,v in imgs["big"].items()}
@@ -49,14 +50,20 @@ G = [
 def card(s):
     n,fa,en,d,tags,best,avoid,dc,dn,bfile = s
     tagh="".join(f"<i>{t}</i>" for t in tags)
-    badge = '<span class="chip ok">نمونه‌ی ساخته‌شده</span>' if bfile else '<span class="chip ref">تصویر مرجع</span>'
+    badge = (f'<a class="chip ok" href="previews/{bfile}" target="_blank" rel="noopener" '
+             f'title="رندر خودمان با Remotion">نمونه‌ی ساخته‌شده ↗</a>'
+             if bfile else '<span class="chip ref">کلیپ مرجع</span>')
     return f'''
     <article class="tcard" data-g="{fa}" data-en="{en}" data-diff="{dc}" data-built="{'1' if bfile else '0'}"
              data-tags="{' '.join(tags)}" data-best="{best}" data-n="{n}">
       <div class="thumb">
-        <img loading="lazy" src="data:image/jpeg;base64,{TINY[n]}" data-full="data:image/jpeg;base64,{BIG[n]}" alt="{fa}">
+        <video class="clip" muted loop playsinline preload="none" poster="{VPOST(n)}"
+               data-src="{VCLIP(n)}" aria-label="کلیپ نمونه‌ی سبک {fa}"></video>
+        <button class="clipbtn" aria-label="پخش کلیپ {fa}"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
         <span class="idx">{n:02d}</span>
         <span class="lvl {dc}"><i></i>{dn}</span>
+        <a class="src" href="{VINFO(n)['url']}" target="_blank" rel="noopener"
+           title="{VINFO(n)['desc']}">Pexels ↗</a>
       </div>
       <div class="tbody">
         <div class="thead">
@@ -131,6 +138,11 @@ CONTENT = f'''
     سبک‌های مورد علاقه‌ات را انتخاب کن تا پرامپت آماده‌ی ساخت بگیری.
   </p>
 
+  <div class="gvideo"><span class="dot"></span>
+    روی هر کارت، کلیپ نمونه از منبع اصلی پخش می‌شود (Pexels). برچسب
+    <b style="direction:ltr">Pexels ↗</b> به صفحه‌ی منبع لینک دارد.
+  </div>
+
   <div class="searchbar">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
     <input id="q" type="search" placeholder="جست‌وجو: کافه، لوکس، ریتم، آموزش…">
@@ -170,16 +182,6 @@ RAIL = '''
 </aside>'''
 
 EXTRA = """
-html.view-list .tgrid{grid-template-columns:1fr}
-html.view-list .tcard{display:grid;grid-template-columns:300px minmax(0,1fr)}
-html.view-list .thumb{aspect-ratio:auto;height:100%;min-height:190px;
-  border-bottom:0;border-inline-end:1px solid var(--line2);background:#F2F3F4}
-html.view-list .thumb img{object-fit:contain}
-html.view-list .tbody{border-top:0}
-html.view-list .tcard:hover{transform:none}
-@media(max-width:760px){html.view-list .tcard{grid-template-columns:1fr}
-  html.view-list .thumb{aspect-ratio:16/9;height:auto;min-height:0;
-    border-inline-end:0;border-bottom:1px solid var(--line2)}}
 .side a[data-f]{cursor:pointer}
 .searchbar{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#fff;
   border-radius:var(--r);padding:10px 14px;margin:20px 0 6px;box-shadow:var(--sh-sm);color:var(--faint)}
@@ -231,6 +233,52 @@ html.view-list .tcard:hover{transform:none}
 .pick:hover{background:var(--fg);color:#fff;border-color:var(--fg)}
 .tcard.picked .pick{background:#15A05E;border-color:#15A05E;color:#fff}
 @media(max-width:520px){.tgrid{grid-template-columns:1fr}}
+
+html.view-list .tgrid{grid-template-columns:1fr}
+html.view-list .tcard{display:grid;grid-template-columns:300px minmax(0,1fr)}
+html.view-list .thumb{aspect-ratio:auto;height:100%;min-height:190px;
+  border-bottom:0;border-inline-end:1px solid var(--line2);background:#F2F3F4}
+html.view-list .thumb img{object-fit:contain}
+html.view-list .tbody{border-top:0}
+html.view-list .tcard:hover{transform:none}
+@media(max-width:760px){html.view-list .tcard{grid-template-columns:1fr}
+  html.view-list .thumb{aspect-ratio:16/9;height:auto;min-height:0;
+    border-inline-end:0;border-bottom:1px solid var(--line2)}}
+
+/* ---- کلیپ نمونه در کارت ---- */
+.thumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  display:block;background:#0B0C0D;z-index:1}
+.thumb{display:block;overflow:hidden}
+.thumb{position:relative}
+.clipbtn{position:absolute;inset-inline-start:9px;bottom:9px;width:26px;height:26px;border-radius:7px;
+  background:rgba(14,16,18,.72);color:#fff;border:0;display:grid;place-items:center;
+  cursor:pointer;backdrop-filter:blur(6px);transition:.15s;z-index:3}
+.clipbtn:hover{background:rgba(14,16,18,.92)}
+.tcard.playing .clipbtn{background:var(--accent)}
+.tcard.playing .clipbtn svg{display:none}
+.tcard.playing .clipbtn:after{content:"";width:7px;height:7px;border-radius:2px;background:#fff}
+.src{position:absolute;top:9px;left:9px;z-index:3;font-size:9.5px;font-weight:700;
+  padding:2px 6px;border-radius:5px;background:rgba(255,255,255,.9);color:#3A4449;
+  direction:ltr;letter-spacing:.02em;opacity:0;transition:.15s}
+.tcard:hover .src,.tcard.playing .src{opacity:1}
+.gvideo{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--faint);
+  margin:-4px 0 14px;padding-inline-start:2px}
+.gvideo .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+"""
+JS_VIDEO = """
+document.querySelectorAll(".tcard").forEach(function(c){
+  var v=c.querySelector("video.clip"), b=c.querySelector(".clipbtn");
+  if(!v||!b) return;
+  function load(){ if(!v.src) v.src=v.dataset.src; }
+  b.addEventListener("click",function(e){
+    e.preventDefault(); e.stopPropagation();
+    load();
+    if(v.paused){ v.play(); c.classList.add("playing"); }
+    else { v.pause(); c.classList.remove("playing"); }
+  });
+  c.addEventListener("mouseenter",function(){ load(); var p=v.play(); if(p) p.then(function(){c.classList.add("playing");}).catch(function(){}); });
+  c.addEventListener("mouseleave",function(){ v.pause(); v.currentTime=0; c.classList.remove("playing"); });
+});
 """
 
 JS = """
@@ -298,7 +346,7 @@ JS = """
 html = head("کاتالوگ ۳۰ سبک گرافیکی موشن", EXTRA) + topbar("catalog") + \
   f'<div class="shell">{SIDEBAR}<main class="content">{CONTENT}</main>{RAIL}</div>' + \
   f'''<footer class="site">۳۰ سبک گرافیکی · ۱۳ نمونه‌ی ساخته‌شده · ۱۷ تصویر مرجع</footer>
-<script>{JS}</script>
+<script>{JS}{JS_VIDEO}</script>
 </body></html>'''
 open("کاتالوگ-۳۰-سبک.html","w").write(html)
 print("catalog:", round(len(html)/1024/1024,2), "MB")

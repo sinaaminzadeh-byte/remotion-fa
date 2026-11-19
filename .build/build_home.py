@@ -2,9 +2,15 @@
 import sys, json
 sys.path.insert(0,".build")
 from design import head, topbar, ICONS, CHEV
+from vids import clip as VCLIP, poster as VPOST
 
 imgs = json.load(open(".build/imgs.json"))["tiny"]
-thumbs = "".join(f'<div class="mini"><img src="data:image/jpeg;base64,{imgs[str(i)]}" alt=""></div>' for i in [1,7,11,16,24,27,15,9])
+PICK = [1, 7, 11, 16, 24, 27, 15, 9]
+thumbs = "".join(
+    f'<a class="mini" href="کاتالوگ-۳۰-سبک.html" title="سبک {i:02d}">'
+    f'<video muted loop playsinline preload="none" poster="{VPOST(i)}" data-src="{VCLIP(i)}"></video>'
+    f'<span class="mplay">▶</span></a>'
+    for i in PICK)
 
 EXTRA = """
 .hero{max-width:1280px;margin:0 auto;padding:56px 24px 8px;text-align:center}
@@ -22,8 +28,12 @@ EXTRA = """
 .wrap{max-width:1280px;margin:0 auto;padding:0 24px 70px}
 .strip{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin:38px 0 0}
 .mini{aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#eee;box-shadow:var(--sh-sm)}
-.mini img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-.mini:hover img{transform:scale(1.06)}
+.mini{position:relative;display:block}
+.mini video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mini .mplay{position:absolute;right:6px;bottom:6px;width:18px;height:18px;border-radius:5px;
+  background:rgba(14,16,18,.6);color:#fff;font-size:8px;display:grid;place-items:center;
+  backdrop-filter:blur(4px);opacity:0;transition:.15s}
+.mini:hover .mplay{opacity:1}
 .sec-title{display:flex;align-items:baseline;gap:12px;margin:56px 0 18px}
 .sec-title h2{font-size:22px;margin:0}
 .sec-title span{font-size:13px;color:var(--faint)}
@@ -144,6 +154,12 @@ CONTENT = f'''
 html = head("استودیوی موشن — ساخت موشن‌گرافیک فارسی با Remotion", EXTRA) + topbar("home") + CONTENT + \
  '''<footer class="site">استودیوی موشن · ساخته‌شده برای کاربران ایجنت آراِنا · موتور ویدیو: Remotion</footer>
 <script>
+document.querySelectorAll(".mini").forEach(function(a){
+  var v=a.querySelector("video"); if(!v) return;
+  a.addEventListener("mouseenter",function(){ if(!v.src) v.src=v.dataset.src;
+    var p=v.play(); if(p) p.catch(function(){}); });
+  a.addEventListener("mouseleave",function(){ v.pause(); v.currentTime=0; });
+});
 document.querySelectorAll(".copycmd").forEach(function(b){
   b.addEventListener("click",function(){
     var t=document.querySelector(".cmdline code").innerText.replace(/^\$\s*/,"");

@@ -1,0 +1,36 @@
+-- 30 سبک گرافیکی — منبع ویدیوی نمونه (هر سبک: کلیدواژه، دلیل انتخاب)
+1  کینتیک تایپوگرافی      → "kinetic typography reel bold"            — حروف درشت با ورود فنری
+2  تایپوگرافی سه‌بعدی      → "3d typography animation"                 — حروف حجم‌دار در فضا
+3  ترمینال / CLI          → "terminal typing animation"               — تایپ کاراکتری، کورسور
+4  انیمیشن کد             → "code animation motion graphics"          — کدِ تایپ‌شونده + هایلایت
+5  زیرنویس تیک‌تاک        → "dynamic subtitles captions edit"         — کلمه‌به‌کلمه با صدا
+6  گرادیان + شیشه         → "glassmorphism animation"                 — کارت بلور و گرادیان
+7  شیشه‌ی مایع            → "liquid glass animation"                  — اعوجاج سیال، نسل ۲۰۲۶
+8  نرم سینمایی            → "soft cinematic motion graphics"          — نور مه‌آلود، آرام
+9  کلی / نرم سه‌بعدی      → "claymorphism 3d animation"               — حجم پاستلی لمس‌پذیر
+10 موشن رابط محصول        → "app ui motion design"                    — موبایل/داشبورد باز می‌شود
+11 نئو-بروتالیست          → "neo brutalism motion graphics"           — فلورسنت + سایه‌ی سخت
+12 ممفیس / دهه ۹۰         → "memphis design animation 90s"            — شکل هندسی تصادفی
+13 وای۲کی / رترو-فیوچر    → "y2k aesthetic animation"                 — کروم براق، پیکسل
+14 گلیچ / دیتاموش         → "glitch effect motion graphics"           — شکست کانال رنگ
+15 نئون / سایبرپانک       → "cyberpunk neon motion graphics"          — شبکه و اسکن‌لاین
+16 بافت کاغذ / کلاژ       → "paper collage animation"                 — کاغذ و چسب و چرخش
+17 کرافت / کارگاه         → "kraft paper animation"                   — کرافت قهوه‌ای، مهر
+18 دست‌کشیده / اسکچ       → "hand drawn sketch animation"             — خط لرزان، وایت‌بورد
+19 کاغذ بریده / استاپ‌موشن → "paper cutout stop motion"                — پله‌پله، نه نرم
+20 مدیای ترکیبی           → "mixed media motion graphics"             — فوتیج + گرافیک روی آن
+21 عمق پارالاکس           → "parallax 2.5d animation"                 — لایه‌های با سرعت متفاوت
+22 دانه‌ی فیلم / نشت نور   → "film grain light leak 16mm"              — دانه و نشت نور
+23 ترکیب دوبعدی و سه‌بعدی  → "2d 3d hybrid animation"                 — تخت روی صحنه‌ی حجمی
+24 وکسل / ایزومتریک       → "voxel animation showcase"               — مکعب‌های شناور
+25 انیمیشن نقشه           → "map animation fly through"               — دوربین روی نقشه
+26 مینیمال ادیتوریال      → "minimal editorial motion graphics"       — خط نازک، فضای خالی
+27 سوئیسی / گرید          → "swiss style typography animation"        — گرید و قرمز/مشکی
+28 تخت مدرن              → "flat design motion graphics corporate"   — هندسی ساده
+29 اینفوگرافیک / داده     → "infographic data animation"              — میله و عدد شمارشی
+30 ویژوالایزر صدا         → "audio visualizer waveform animation"     — موج صوتی بدون کاور
+
+قواعد:
+- ویدیو باید خودِ «زبان بصری» را نشان دهد، نه آموزش نرم‌افزار (نه tutorial/screencast).
+- اگر ویدیوی فارسی/ایرانی با همان سبک پیدا شد، اولویت دارد.
+- کلیپ: ۵ ثانیه از بهترین بخش، برش میانه، بی‌صدا، 480px، ~۱۵۰KB.
