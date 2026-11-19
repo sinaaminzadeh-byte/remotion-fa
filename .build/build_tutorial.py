@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json, sys
 sys.path.insert(0,".build")
-from design import head, topbar, ICONS
+from design import head, topbar, toolbar, side_item, ICONS
 
 real   = json.load(open(".build/real.json"))
 shots  = json.load(open(".build/shots.json"))
@@ -67,16 +67,16 @@ SIDEBAR = f'''
   <div class="side-group">
     <div class="side-label">{ICONS['spark']} شروع سریع</div>
     <div class="side">
-      <a href="#s1" class="on">۱. ثبت‌نام <span class="cnt">۱ دقیقه</span></a>
-      <a href="#s2">۲. انتخاب حالت ایجنت <span class="cnt">۱ دقیقه</span></a>
-      <a href="#s3">۳. آماده‌سازی فایل‌ها <span class="cnt">۵ دقیقه</span></a>
+      {side_item("۱. ثبت‌نام", "#s1", cnt="۱ دقیقه", on=True)}
+      {side_item("۲. انتخاب حالت ایجنت", "#s2", cnt="۱ دقیقه")}
+      {side_item("۳. آماده‌سازی فایل‌ها", "#s3", cnt="۵ دقیقه")}
     </div>
   </div>
   <div class="side-group">
     <div class="side-label">{ICONS['book']} ساخت ویدیو</div>
     <div class="side">
-      <a href="#s4">۴. پرامپت شش‌بخشی <span class="pill">مهم</span></a>
-      <a href="#s5">۵. ساخت توسط ایجنت <span class="cnt">۱۰ دقیقه</span></a>
+      {side_item("۴. پرامپت شش‌بخشی", "#s4", pill="مهم")}
+      {side_item("۵. ساخت توسط ایجنت", "#s5", cnt="۱۰ دقیقه")}
       <a href="#s6">۶. اصلاح و بازبینی</a>
       <a href="#s7">۷. دانلود خروجی</a>
     </div>
@@ -84,7 +84,7 @@ SIDEBAR = f'''
   <div class="side-group">
     <div class="side-label">{ICONS['grid']} مرجع</div>
     <div class="side">
-      <a href="کاتالوگ-۳۰-سبک.html">کاتالوگ ۳۰ سبک <span class="cnt">۳۰</span></a>
+      {side_item("کاتالوگ ۳۰ سبک", "کاتالوگ-۳۰-سبک.html", cnt="۳۰")}
       <a href="#fix">عیب‌یابی رایج</a>
       <a href="#faq">پرسش‌های متداول</a>
     </div>
@@ -106,6 +106,7 @@ def step(id_, n, title, sub, body):
 </section>'''
 
 CONTENT = f'''
+{toolbar()}
 <div class="doc">
   <div class="crumbs">راهنما <span>/</span> <b>ساخت موشن با ایجنت</b></div>
   <h1>با ایجنت آراِنا یک ویدیوی موشن فارسی بساز</h1>
@@ -115,10 +116,25 @@ CONTENT = f'''
     و در پایان یک فایل ویدیو و کل پروژه را دانلود می‌کنی.
   </p>
 
-  <div class="grid g3" style="margin:22px 0 8px">
-    <div class="card"><div class="ico">۱۰</div><h3>حدود ۱۰ دقیقه</h3><p>برای اولین ویدیو، از صفر تا خروجی.</p></div>
-    <div class="card"><div class="ico">۰</div><h3>بدون کدنویسی</h3><p>لازم نیست چیزی نصب کنی یا ترمینال باز کنی.</p></div>
-    <div class="card"><div class="ico">فا</div><h3>فارسی و راست‌به‌چپ</h3><p>فونت وزیرمتن و چیدمان RTL از پیش تنظیم شده.</p></div>
+  <div class="cardrow">
+    <div>
+      <div class="ico">{ICONS['film']}</div>
+      <h3>حدود ۱۰ دقیقه</h3>
+      <p>برای اولین ویدیو، از صفر تا خروجی MP4 — بدون نصب چیزی روی سیستم خودت.</p>
+      <div class="tags"><span>8s · 30fps</span></div>
+    </div>
+    <div>
+      <div class="ico">{ICONS['spark']}</div>
+      <h3>بدون کدنویسی</h3>
+      <p>فقط پرامپت می‌نویسی؛ نصب ابزار، ساخت کامپوننت و رندر را ایجنت انجام می‌دهد.</p>
+      <div class="tags"><span>agent mode</span></div>
+    </div>
+    <div>
+      <div class="ico">{ICONS['type']}</div>
+      <h3>فارسی و راست‌به‌چپ</h3>
+      <p>فونت وزیرمتن با ۹ وزن و چیدمان RTL از پیش تنظیم شده — بدون به‌هم‌ریختگی حروف.</p>
+      <div class="tags"><span dir="ltr">Vazirmatn</span></div>
+    </div>
   </div>
 
   <div class="note" style="margin-top:14px">
@@ -306,7 +322,28 @@ RAIL = '''
 </aside>'''
 
 EXTRA_CSS = """
-.doc h2{scroll-margin-top:86px}
+.doc h2{scroll-margin-top:96px}
+/* --- پرامپت‌باکس به سبک کارت کد remocn --- */
+.pbox .phead{background:#fff;border-bottom:1px solid var(--line2);padding:9px 12px 9px 15px}
+.pbox .phead>span{display:inline-flex;align-items:center;gap:7px;font-weight:600;
+  color:var(--fg);font-size:12.5px}
+.pbox .phead>span:before{content:"";width:7px;height:7px;border-radius:2px;
+  background:var(--accent);display:inline-block}
+.pbox .phint{font-size:11px;color:var(--faint);font-family:ui-monospace,monospace;
+  direction:ltr;margin-inline-start:auto;margin-inline-end:10px}
+.pbox pre{background:#FCFCFD;font-size:12.4px;line-height:2.05;padding:16px 18px}
+.pbox pre::-webkit-scrollbar{width:8px}
+.pbox pre::-webkit-scrollbar-thumb{background:#D8DCDF;border-radius:8px}
+/* --- حالت فهرستی --- */
+html.view-list .cardrow{grid-template-columns:1fr}
+html.view-list .cardrow>*{border-inline-start:0;border-top:1px solid var(--line2)}
+html.view-list .cardrow>*:first-child{border-top:0}
+html.view-list .grid.g3{grid-template-columns:1fr}
+html.view-list .fig,html.view-list .pbox{margin-top:12px}
+/* --- شکل‌ها --- */
+.fig img{aspect-ratio:16/9;object-fit:cover;object-position:top center}
+.fig{border-radius:var(--r-lg)}
+
 .fig{margin:18px 0 0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:var(--sh-sm)}
 .fig img{width:100%;display:block}
 .fig figcaption{display:flex;align-items:center;gap:8px;padding:9px 15px;font-size:12px;

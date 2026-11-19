@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys, json
 sys.path.insert(0,".build")
-from design import head, topbar, ICONS
+from design import head, topbar, ICONS, CHEV
 
 imgs = json.load(open(".build/imgs.json"))["tiny"]
 thumbs = "".join(f'<div class="mini"><img src="data:image/jpeg;base64,{imgs[str(i)]}" alt=""></div>' for i in [1,7,11,16,24,27,15,9])
@@ -14,6 +14,11 @@ EXTRA = """
 .hero .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
 .btn-lg{height:42px;padding:0 24px;font-size:14.5px}
 .hero .hint{font-size:12.5px;color:var(--faint)}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;
+  color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:5px 12px;margin-bottom:20px;box-shadow:var(--sh-xs)}
+.hero .eyebrow em{font-style:normal;width:6px;height:6px;border-radius:50%;background:#15A05E;
+  box-shadow:0 0 0 3px rgba(21,160,94,.14);display:inline-block}
 .wrap{max-width:1280px;margin:0 auto;padding:0 24px 70px}
 .strip{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin:38px 0 0}
 .mini{aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#eee;box-shadow:var(--sh-sm)}
@@ -25,8 +30,28 @@ EXTRA = """
 .big{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .bcard{border:1px solid var(--line);border-radius:var(--r-xl);background:#fff;padding:24px;
   box-shadow:var(--sh-sm);transition:.18s;display:flex;flex-direction:column;gap:8px}
-.bcard:hover{box-shadow:var(--sh);transform:translateY(-2px);border-color:rgba(14,16,18,.18)}
-.bcard .ico{width:38px;height:38px;border-radius:10px;background:var(--soft);display:grid;place-items:center;font-size:16px;margin-bottom:6px}
+.cmdbar{border:1px solid var(--line);border-radius:var(--r-xl);background:#fff;
+  box-shadow:var(--sh-sm);margin:26px 0 0;overflow:hidden}
+.cmdtabs{display:flex;gap:4px;direction:ltr;padding:8px 10px;border-bottom:1px solid var(--line2);
+  background:var(--soft)}
+.cmdtabs span{font-size:11.5px;padding:4px 10px;border-radius:7px;color:var(--muted);
+  direction:ltr;font-family:ui-monospace,monospace;cursor:default}
+.cmdtabs span.cur{background:#fff;color:var(--fg);box-shadow:var(--sh-sm);font-weight:600}
+.cmdline{display:flex;align-items:center;gap:12px;padding:12px 14px;direction:ltr}
+.cmdline code{background:transparent;border:0;font-size:13px;padding:0;flex:1;
+  color:#243038;white-space:nowrap;overflow:auto}
+.copycmd{background:var(--fg);color:#fff;border:0;border-radius:8px;padding:6px 14px;
+  font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:.15s;flex-shrink:0}
+.copycmd:hover{background:#000}
+.cmdfoot{display:flex;align-items:center;gap:8px;direction:rtl;font-size:12.5px;color:var(--muted);
+  padding:9px 14px;border-top:1px solid var(--line2);background:#FCFCFD}
+.cmdfoot svg{color:var(--accent)}
+.bcard{border:1px solid var(--line);border-radius:var(--r-xl);background:#fff;padding:24px;
+  box-shadow:var(--sh-sm);transition:.18s;display:flex;flex-direction:column;gap:8px}
+
+.cardrow a{display:block;transition:background .15s}
+.cardrow a:hover{background:#FCFCFD}
+.cardrow a .ico{width:38px;height:38px;border-radius:10px;background:var(--soft);display:grid;place-items:center;font-size:16px;margin-bottom:6px}
 .bcard h3{font-size:16px}
 .bcard p{font-size:13.5px;color:var(--muted);margin:0;flex-grow:1}
 .bcard .go{font-size:13px;font-weight:600;color:var(--accent);margin-top:6px}
@@ -46,6 +71,7 @@ EXTRA = """
 
 CONTENT = f'''
 <section class="hero">
+  <div class="eyebrow"><em></em> ۱۳ نمونه‌ی ساخته‌شده · ۳۰ سبک · فارسی و RTL</div>
   <h1>موشن‌گرافیک فارسی، با <em>حرف زدن</em> ساخته می‌شود</h1>
   <p class="lead">
     یک راهنمای کامل برای ساخت ویدیوی موشن با ایجنت آراِنا و Remotion — بدون خط کد.
@@ -61,28 +87,41 @@ CONTENT = f'''
 
 <div class="wrap">
   <div class="sec-title"><h2>از کجا شروع کنم؟</h2><span>دو مسیر، بسته به اینکه چه می‌دانی</span></div>
-  <div class="big">
-    <a class="bcard" href="آموزش-ساخت-موشن.html">
+  <div class="cardrow">
+    <a href="آموزش-ساخت-موشن.html">
       <div class="ico">{ICONS['book']}</div>
       <h3>راهنمای گام‌به‌گام</h3>
       <p>از ثبت‌نام در آراِنا تا فایل MP4، در هفت قدم با اسکرین‌شات واقعی از خود سایت.
-         شامل پرامپت آماده، جدول آپلود فایل، و عیب‌یابی.</p>
-      <span class="go">شروع کن →</span>
+         شامل پرامپت آماده، جدول آپلود فایل و عیب‌یابی.</p>
+      <div class="tags"><span>7 steps</span></div>
     </a>
-    <a class="bcard" href="کاتالوگ-۳۰-سبک.html">
+    <a href="کاتالوگ-۳۰-سبک.html">
       <div class="ico">{ICONS['palette']}</div>
       <h3>کاتالوگ ۳۰ سبک</h3>
       <p>سی زبان بصری با تصویر: از کینتیک تایپوگرافی و نئون تا کرافت، وکسل و اینفوگرافیک.
          سبک‌هایت را انتخاب کن و پرامپت آماده بگیر.</p>
-      <span class="go">سبک‌ها را ببین →</span>
+      <div class="tags"><span>30 styles</span></div>
     </a>
-    <a class="bcard" href="گزارش-سبک‌ها-و-ابزارهای-موشن.md">
+    <a href="گزارش-سبک‌ها-و-ابزارهای-موشن.md">
       <div class="ico">{ICONS['spark']}</div>
       <h3>گزارش تحقیق</h3>
-      <p>۲۲ سبک دیگر که می‌شود اضافه کرد، به‌همراه ابزارهای مکمل:
-         پکیج‌های رسمی، کتابخانه‌های کامپوننت و موتورهای جایگزین.</p>
-      <span class="go">گزارش را بخوان →</span>
+      <p>۲۲ سبک دیگر که می‌شود اضافه کرد، به‌همراه ابزارهای مکمل: پکیج‌های رسمی،
+         کتابخانه‌های کامپوننت و موتورهای جایگزین.</p>
+      <div class="tags"><span>MIT · 2026</span></div>
     </a>
+  </div>
+
+  <div class="cmdbar">
+    <div class="cmdtabs">
+      <span class="cur">npx create-video</span><span>npm run dev</span><span>npx remotion</span>
+    </div>
+    <div class="cmdline">
+      <code dir="ltr">$ npx remotion render Daneh out/daneh.mp4</code>
+      <button class="copycmd">کپی</button>
+    </div>
+    <div class="cmdfoot">
+      {ICONS['spark']} توی ایجنت هم فقط کافی است بنویسی: «ویدیو را رندر کن و MP4 را بده».
+    </div>
   </div>
 
   <div class="sec-title"><h2>مسیر در چهار قدم</h2><span>همان چیزی که در راهنما قدم‌به‌قدم می‌بینی</span></div>
@@ -104,6 +143,15 @@ CONTENT = f'''
 
 html = head("استودیوی موشن — ساخت موشن‌گرافیک فارسی با Remotion", EXTRA) + topbar("home") + CONTENT + \
  '''<footer class="site">استودیوی موشن · ساخته‌شده برای کاربران ایجنت آراِنا · موتور ویدیو: Remotion</footer>
+<script>
+document.querySelectorAll(".copycmd").forEach(function(b){
+  b.addEventListener("click",function(){
+    var t=document.querySelector(".cmdline code").innerText.replace(/^\$\s*/,"");
+    var d=function(){b.textContent="کپی شد";setTimeout(function(){b.textContent="کپی";},1500);};
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(d).catch(d);}else{d();}
+  });
+});
+</script>
 </body></html>'''
 open("index.html","w").write(html)
 print("home:", round(len(html)/1024), "KB")

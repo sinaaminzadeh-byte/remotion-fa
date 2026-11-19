@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json, sys
 sys.path.insert(0,".build")
-from design import head, topbar, ICONS
+from design import head, topbar, toolbar, side_item, ICONS, CHEV
 
 imgs = json.load(open(".build/imgs.json"))
 BIG  = {int(k):v for k,v in imgs["big"].items()}
@@ -93,34 +93,35 @@ SIDEBAR = f'''
   <div class="side-group">
     <div class="side-label">{ICONS['palette']} خانواده‌های بصری</div>
     <div class="side" id="famnav">
-      <a href="#gA">تایپوگرافی <span class="cnt">۵</span></a>
-      <a href="#gB">دیجیتال و رابط کاربری <span class="cnt">۵</span></a>
-      <a href="#gC">جسور و خیابانی <span class="cnt">۵</span></a>
-      <a href="#gD">بافت و دست‌ساز <span class="cnt">۵</span></a>
-      <a href="#gE">سینمایی و فضایی <span class="cnt">۵</span></a>
-      <a href="#gF">داده و ادیتوریال <span class="cnt">۵</span></a>
+      {side_item("تایپوگرافی","#gA",cnt="۵")}
+      {side_item("دیجیتال و رابط کاربری","#gB",cnt="۵")}
+      {side_item("جسور و خیابانی","#gC",cnt="۵")}
+      {side_item("بافت و دست‌ساز","#gD",cnt="۵")}
+      {side_item("سینمایی و فضایی","#gE",cnt="۵")}
+      {side_item("داده و ادیتوریال","#gF",cnt="۵")}
     </div>
   </div>
   <div class="side-group">
     <div class="side-label">{ICONS['grid']} فیلتر سریع</div>
     <div class="side">
-      <a href="#" data-f="all" class="on">همه‌ی سبک‌ها <span class="cnt">۳۰</span></a>
-      <a href="#" data-f="de">ساده <span class="cnt">۱۸</span></a>
-      <a href="#" data-f="dm">متوسط <span class="cnt">۹</span></a>
-      <a href="#" data-f="dh">سنگین <span class="cnt">۳</span></a>
-      <a href="#" data-f="b1">فقط ساخته‌شده‌ها <span class="cnt">۱۳</span></a>
+      <a href="#" data-f="all" class="on">همه‌ی سبک‌ها <span class="cnt">۳۰</span><span class="chev">{CHEV}</span></a>
+      <a href="#" data-f="de">ساده <span class="cnt">۱۸</span><span class="chev">{CHEV}</span></a>
+      <a href="#" data-f="dm">متوسط <span class="cnt">۹</span><span class="chev">{CHEV}</span></a>
+      <a href="#" data-f="dh">سنگین <span class="cnt">۳</span><span class="chev">{CHEV}</span></a>
+      <a href="#" data-f="b1">فقط ساخته‌شده‌ها <span class="cnt">۱۳</span><span class="chev">{CHEV}</span></a>
     </div>
   </div>
   <div class="side-group">
     <div class="side-label">{ICONS['book']} مرتبط</div>
     <div class="side">
-      <a href="آموزش-ساخت-موشن.html">راهنمای ساخت</a>
-      <a href="آموزش-ساخت-موشن.html#s4">پرامپت آماده <span class="pill">مهم</span></a>
+      {side_item("راهنمای ساخت","آموزش-ساخت-موشن.html")}
+      {side_item("پرامپت آماده","آموزش-ساخت-موشن.html#s4",pill="مهم")}
     </div>
   </div>
 </aside>'''
 
 CONTENT = f'''
+{toolbar()}
 <div class="doc">
   <div class="crumbs">کاتالوگ <span>/</span> <b>۳۰ سبک گرافیکی</b></div>
   <h1>۳۰ سبک گرافیکی موشن</h1>
@@ -169,6 +170,16 @@ RAIL = '''
 </aside>'''
 
 EXTRA = """
+html.view-list .tgrid{grid-template-columns:1fr}
+html.view-list .tcard{display:grid;grid-template-columns:300px minmax(0,1fr)}
+html.view-list .thumb{aspect-ratio:auto;height:100%;min-height:190px;
+  border-bottom:0;border-inline-end:1px solid var(--line2);background:#F2F3F4}
+html.view-list .thumb img{object-fit:contain}
+html.view-list .tbody{border-top:0}
+html.view-list .tcard:hover{transform:none}
+@media(max-width:760px){html.view-list .tcard{grid-template-columns:1fr}
+  html.view-list .thumb{aspect-ratio:16/9;height:auto;min-height:0;
+    border-inline-end:0;border-bottom:1px solid var(--line2)}}
 .side a[data-f]{cursor:pointer}
 .searchbar{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#fff;
   border-radius:var(--r);padding:10px 14px;margin:20px 0 6px;box-shadow:var(--sh-sm);color:var(--faint)}
