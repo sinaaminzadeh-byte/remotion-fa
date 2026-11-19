@@ -1,0 +1,10 @@
+node_modules/
+__pycache__/
+.cache/
+.npm/
+.local/
+.build/profile*/
+.build/*.png
+uploads/
+motion-starter/node_modules/
+motion-starter/out/
