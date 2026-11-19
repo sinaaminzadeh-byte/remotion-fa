@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json, sys
 sys.path.insert(0,".build")
-from design import head, topbar, toolbar, side_item, ICONS
+from design import head, topbar, toolbar, side_item, ICONS, footer
 
 real   = json.load(open(".build/real.json"))
 shots  = json.load(open(".build/shots.json"))
@@ -368,8 +368,7 @@ cd animation-films &amp;&amp; npm install</pre>
   </div></div>
 
   <div class="note g" style="margin-top:12px"><span class="ic">✓</span><div>
-    <b>مجوز:</b> این ریپو <b>MIT</b> است — استفادهٔ تجاری آزاد، تغییر آزاد، فقط ذکر منبع.
-    نمونه‌های خودمان با کلیپ واقعی همان سبک‌ها در <a href="۳۹-سبک-کدی.html">صفحهٔ ۳۹ سبک کدی</a> است.
+    نمونه‌های آمادهٔ همهٔ این سبک‌ها را در <a href="۳۹-سبک-کدی.html">صفحهٔ ۳۹ سبک کدی</a> ببین.
   </div></div>
 
   <hr class="hr">
@@ -422,9 +421,9 @@ RAIL = '''
     </div>
   </div>
   <div class="rail-card dark">
-    <h4 style="color:#fff">شروع سریع</h4>
+    <h4>شروع سریع</h4>
     <p>پرامپت کامل را کپی کن، جاهای خالی را پر کن و در ایجنت بچسبان.</p>
-    <a class="btn" style="background:#fff;color:#0E1012;border-color:#fff;width:100%;justify-content:center" href="#s4">رفتن به پرامپت</a>
+    <a class="btn accent" style="width:100%;justify-content:center" href="#s4">رفتن به پرامپت</a>
   </div>
   <div class="rail-card">
     <h4>منابع</h4>
@@ -438,14 +437,14 @@ RAIL = '''
 EXTRA_CSS = """
 .doc h2{scroll-margin-top:96px}
 /* --- پرامپت‌باکس به سبک کارت کد remocn --- */
-.pbox .phead{background:#fff;border-bottom:1px solid var(--line2);padding:9px 12px 9px 15px}
+.pbox .phead{background:var(--card);border-bottom:1px solid var(--line2);padding:9px 12px 9px 15px}
 .pbox .phead>span{display:inline-flex;align-items:center;gap:7px;font-weight:600;
   color:var(--fg);font-size:12.5px}
 .pbox .phead>span:before{content:"";width:7px;height:7px;border-radius:2px;
   background:var(--accent);display:inline-block}
 .pbox .phint{font-size:11px;color:var(--faint);font-family:ui-monospace,monospace;
   direction:ltr;margin-inline-start:auto;margin-inline-end:10px}
-.pbox pre{background:#FCFCFD;font-size:12.4px;line-height:2.05;padding:16px 18px}
+.pbox pre{background:#0A0D11;font-size:12.4px;line-height:2.05;padding:16px 18px}
 .pbox pre::-webkit-scrollbar{width:8px}
 .pbox pre::-webkit-scrollbar-thumb{background:#D8DCDF;border-radius:8px}
 /* --- حالت فهرستی --- */
@@ -458,33 +457,32 @@ html.view-list .fig,html.view-list .pbox{margin-top:12px}
 .fig img{aspect-ratio:16/9;object-fit:cover;object-position:top center}
 .fig{border-radius:var(--r-lg)}
 
-.fig{margin:18px 0 0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:var(--sh-sm)}
+.fig{margin:18px 0 0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--card);box-shadow:var(--sh-sm)}
 .fig img{width:100%;display:block}
 .fig figcaption{display:flex;align-items:center;gap:8px;padding:9px 15px;font-size:12px;
-  color:var(--muted);border-top:1px solid var(--line2);background:var(--soft)}
-.fig.real figcaption{background:var(--green-soft);color:#14563A}
+  color:var(--muted);border-top:1px solid var(--line2);background:rgba(255,255,255,.03)}
+.fig.real figcaption{background:rgba(52,211,153,.1);color:#7FE8C0}
 .dotg,.dotm{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .dotg{background:#15A05E;box-shadow:0 0 0 3px rgba(21,160,94,.15)}
 .dotm{background:#B7BEC2}
-.pbox{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin:12px 0 18px;background:#fff;box-shadow:var(--sh-sm)}
+.pbox{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin:12px 0 18px;background:var(--card);box-shadow:var(--sh-sm)}
 .phead{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 15px;
   border-bottom:1px solid var(--line2);background:var(--soft);font-size:12.5px;color:var(--muted)}
-.copy{background:var(--fg);color:#fff;border:0;border-radius:8px;padding:6px 14px;font-size:12px;
+.copy{background:linear-gradient(180deg,#3D8BFF,#2069E8);color:#fff;border:0;border-radius:8px;padding:6px 14px;font-size:12px;
   font-family:inherit;font-weight:600;cursor:pointer;transition:.15s}
-.copy:hover{background:#000}
+.copy:hover{filter:brightness(1.08)}
 .pbox pre{margin:0;padding:16px 18px;font-size:12.5px;line-height:2;white-space:pre-wrap;
-  color:#243038;font-family:'JetBrains Mono',ui-monospace,monospace;direction:rtl;text-align:right;
+  color:#C9D6E4;font-family:'JetBrains Mono',ui-monospace,monospace;direction:rtl;text-align:right;
   max-height:430px;overflow:auto}
 .cta-card{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
-  border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(180deg,#fff,#F7F8F9);
+  border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(180deg,#11161D,#0C1015);
   padding:20px 22px;box-shadow:var(--sh-sm)}
 """
 
 html = head("راهنمای ساخت موشن با ایجنت آراِنا", EXTRA_CSS) + \
  topbar("guide") + \
  f'<div class="shell">{SIDEBAR}<main class="content">{CONTENT}</main>{RAIL}</div>' + \
- '''<footer class="site">ساخته‌شده برای کاربران ایجنت آراِنا · موتور ویدیو: Remotion · فونت: وزیرمتن</footer>
-<script>
+ footer() + '''<script>
 document.querySelectorAll(".copy").forEach(function(b){
   b.addEventListener("click",function(){
     var t=document.getElementById(b.dataset.target).innerText;

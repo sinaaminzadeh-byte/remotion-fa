@@ -2,7 +2,7 @@
 """ساخت صفحهٔ «۳۹ سبک کدی» (animation-styles / Remotion)."""
 import sys
 sys.path.insert(0, ".build")
-from design import head, topbar, toolbar, side_item, ICONS, CHEV
+from design import head, topbar, toolbar, side_item, ICONS, CHEV, footer
 import asdata as A
 
 STYLES = A.STYLES
@@ -87,11 +87,9 @@ RAIL = f'''
     <a class="btn accent" style="width:100%" href="آموزش-ساخت-موشن.html#as">چطور استفاده کنم</a>
   </div>
   <div class="rail-card dark">
-    <h4 style="color:#fff">مجوز و منبع</h4>
-    <p>ریپوی <span style="direction:ltr">deenukhan/animation-styles</span> با مجوز <b>MIT</b> —
-       استفادهٔ آزاد، تغییر مجاز، با ذکر منبع.</p>
-    <a class="btn" style="background:#fff;color:#0E1012;border-color:#fff;width:100%"
-       href="https://github.com/deenukhan/animation-styles" target="_blank" rel="noopener">رفتن به ریپو ↗</a>
+    <h4 style="color:#fff">قصهٔ خودت را بده</h4>
+    <p>هر ۳۹ فیلم یک قصهٔ ثابت را نشان می‌دهند. تو قصه‌ات را می‌دهی و همان سبک آن را بازمی‌گوید.</p>
+    <a class="btn accent" style="width:100%" href="آموزش-ساخت-موشن.html#as">پرامپت آماده</a>
   </div>
   <div class="rail-card">
     <h4>ترتیب پیشنهادی</h4>
@@ -143,15 +141,15 @@ CONTENT = f'''
 </div>'''
 
 EXTRA = """
-.searchbar{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#fff;
+.searchbar{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);
   border-radius:var(--r);padding:10px 14px;margin:22px 0 10px;box-shadow:var(--sh-sm);color:var(--faint)}
 .searchbar input{flex:1;border:0;outline:0;font-family:inherit;font-size:14px;color:var(--fg);background:transparent}
 .searchbar .cnt{font-size:12px;color:var(--faint);white-space:nowrap;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .chip{font-family:inherit;font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);
-  background:#fff;color:var(--muted);cursor:pointer;transition:.14s;display:inline-flex;align-items:center;gap:5px}
-.chip:hover{color:var(--fg);border-color:rgba(14,16,18,.2)}
-.chip.on{background:var(--fg);color:#fff;border-color:var(--fg)}
+  background:rgba(255,255,255,.04);color:var(--muted);cursor:pointer;transition:.14s;display:inline-flex;align-items:center;gap:5px}
+.chip:hover{color:#fff;border-color:rgba(47,128,255,.45)}
+.chip.on{background:linear-gradient(180deg,#3D8BFF,#2069E8);color:#fff;border-color:#2F80FF}
 .chip i{font-style:normal;font-size:10.5px;opacity:.65;font-variant-numeric:tabular-nums}
 .empty{border:1px dashed var(--line);border-radius:var(--r);padding:26px;text-align:center;
   color:var(--faint);font-size:13.5px;margin-top:20px}
@@ -162,24 +160,24 @@ EXTRA = """
 .ghead h2{font-size:18px;margin:0}
 .gsub{font-size:11.5px;color:var(--faint);direction:ltr;letter-spacing:.01em}
 .gcount{margin-inline-start:auto;font-size:11.5px;color:var(--faint);border:1px solid var(--line);
-  padding:3px 10px;border-radius:999px;background:#fff}
+  padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.04)}
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
-.scard{border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;overflow:hidden;
+.scard{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card);overflow:hidden;
   box-shadow:var(--sh-sm);transition:.16s;display:flex;flex-direction:column}
-.scard:hover{box-shadow:var(--sh);border-color:rgba(14,16,18,.18);transform:translateY(-2px)}
-.sthumb{position:relative;aspect-ratio:4/5;background:#F0F1F2;overflow:hidden;border-bottom:1px solid var(--line2)}
+.scard:hover{box-shadow:var(--sh);border-color:rgba(47,128,255,.4);transform:translateY(-2px)}
+.sthumb{position:relative;aspect-ratio:4/5;background:#0B0E12;overflow:hidden;border-bottom:1px solid var(--line2)}
 .sthumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.sthumb .num{position:absolute;top:8px;right:8px;background:rgba(14,16,18,.82);color:#fff;
+.sthumb .num{position:absolute;top:8px;right:8px;background:rgba(8,10,13,.85);color:#fff;
   font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;direction:ltr;backdrop-filter:blur(4px)}
 .sthumb .code{position:absolute;top:8px;left:8px;font-size:9px;font-family:ui-monospace,monospace;
-  background:rgba(255,255,255,.9);color:#3A4449;padding:2px 6px;border-radius:5px;direction:ltr;
+  background:rgba(255,255,255,.92);color:#1B2430;padding:2px 6px;border-radius:5px;direction:ltr;
   opacity:0;transition:.15s;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .scard:hover .sthumb .code{opacity:1}
 .sthumb .play{position:absolute;bottom:8px;left:8px;width:26px;height:26px;border-radius:7px;
-  background:rgba(14,16,18,.72);color:#fff;border:0;display:grid;place-items:center;cursor:pointer;
+  background:rgba(8,10,13,.75);color:#fff;display:grid;place-items:center;cursor:pointer;border:1px solid rgba(255,255,255,.12);
   backdrop-filter:blur(6px);transition:.15s;z-index:2}
-.sthumb .play:hover{background:rgba(14,16,18,.92)}
-.scard.playing .play{background:var(--accent)}
+.sthumb .play:hover{background:rgba(8,10,13,.95)}
+.scard.playing .play{background:linear-gradient(180deg,#3D8BFF,#2069E8)}
 .scard.playing .play svg{display:none}
 .scard.playing .play:after{content:"";width:7px;height:7px;border-radius:2px;background:#fff}
 .sbody{padding:12px 13px 13px;display:flex;flex-direction:column;gap:5px;flex:1}
@@ -191,7 +189,7 @@ EXTRA = """
 .sfoot a{color:var(--accent);font-weight:600;direction:ltr}
 .sfoot a:hover{text-decoration:underline;text-underline-offset:2px}
 .sfoot .eq{direction:ltr;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 6px}
-.sfoot .eq:hover{color:var(--fg);border-color:rgba(14,16,18,.25);text-decoration:none}
+.sfoot .eq:hover{color:#fff;border-color:rgba(47,128,255,.5);text-decoration:none}
 @media(max-width:520px){.sgrid{grid-template-columns:repeat(2,1fr);gap:10px}
   .sbody p{display:none}.sbody h3{font-size:12px}}
 """
@@ -232,8 +230,7 @@ apply();
 
 html = (head("۳۹ سبک کدی — آمادهٔ رندر با Remotion", EXTRA) + topbar("styles") +
         f'<div class="shell">{SIDEBAR}<main class="content">{CONTENT}</main>{RAIL}</div>' +
-        f'''<footer class="site">۳۹ سبک کدی · <span style="direction:ltr">animation-styles</span> (MIT) · رندر با Remotion</footer>
-<script>{JS}</script>
+        footer() + f'''<script>{JS}</script>
 </body></html>''')
 
 open("۳۹-سبک-کدی.html", "w").write(html)

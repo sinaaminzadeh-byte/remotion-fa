@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json, sys
 sys.path.insert(0,".build")
-from design import head, topbar, toolbar, side_item, ICONS, CHEV
+from design import head, topbar, toolbar, side_item, ICONS, CHEV, footer
 from vids import clip as VCLIP, poster as VPOST, info as VINFO
 
 imgs = json.load(open(".build/imgs.json"))
@@ -63,7 +63,7 @@ def card(s):
         <span class="idx">{n:02d}</span>
         <span class="lvl {dc}"><i></i>{dn}</span>
         <a class="src" href="{VINFO(n)['url']}" target="_blank" rel="noopener"
-           title="{VINFO(n)['desc']}">Pexels ↗</a>
+           title="{VINFO(n)['desc']}">منبع ↗</a>
       </div>
       <div class="tbody">
         <div class="thead">
@@ -138,11 +138,6 @@ CONTENT = f'''
     سبک‌های مورد علاقه‌ات را انتخاب کن تا پرامپت آماده‌ی ساخت بگیری.
   </p>
 
-  <div class="gvideo"><span class="dot"></span>
-    روی هر کارت، کلیپ نمونه از منبع اصلی پخش می‌شود (Pexels). برچسب
-    <b style="direction:ltr">Pexels ↗</b> به صفحه‌ی منبع لینک دارد.
-  </div>
-
   <div class="searchbar">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
     <input id="q" type="search" placeholder="جست‌وجو: کافه، لوکس، ریتم، آموزش…">
@@ -171,9 +166,9 @@ RAIL = '''
     <b>دقیق، بی‌زمان، آرام</b> → سوئیسی</p>
   </div>
   <div class="rail-card dark">
-    <h4 style="color:#fff">انتخاب‌های تو</h4>
+    <h4>انتخاب‌های تو</h4>
     <p id="railpicks">هنوز چیزی انتخاب نکردی.</p>
-    <button class="btn" id="raingo" style="background:#fff;color:#0E1012;border-color:#fff;width:100%;justify-content:center">ساخت پرامپت</button>
+    <button class="btn" id="raingo" style="width:100%;justify-content:center">ساخت پرامپت</button>
   </div>
   <div class="rail-card">
     <h4>یادت باشد</h4>
@@ -183,7 +178,7 @@ RAIL = '''
 
 EXTRA = """
 .side a[data-f]{cursor:pointer}
-.searchbar{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#fff;
+.searchbar{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);
   border-radius:var(--r);padding:10px 14px;margin:20px 0 6px;box-shadow:var(--sh-sm);color:var(--faint)}
 .searchbar input{flex:1;border:0;outline:0;font-family:inherit;font-size:14px;color:var(--fg);background:transparent}
 .searchbar input::placeholder{color:var(--faint)}
@@ -196,16 +191,16 @@ EXTRA = """
 .ghead h2{font-size:19px;margin:0}
 .gsub{font-size:12.5px;color:var(--faint)}
 .gcount{margin-inline-start:auto;font-size:11.5px;color:var(--faint);border:1px solid var(--line);
-  padding:3px 10px;border-radius:999px;background:#fff}
+  padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.04)}
 .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.tcard{border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;overflow:hidden;
+.tcard{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card);overflow:hidden;
   display:flex;flex-direction:column;transition:.16s;box-shadow:var(--sh-sm)}
-.tcard:hover{box-shadow:var(--sh);border-color:rgba(14,16,18,.18);transform:translateY(-2px)}
+.tcard:hover{box-shadow:var(--sh);border-color:rgba(47,128,255,.4);transform:translateY(-2px)}
 .tcard.hide{display:none}
-.tcard.picked{border-color:#15A05E;box-shadow:0 0 0 1px #15A05E,var(--sh)}
-.thumb{position:relative;aspect-ratio:16/9;background:#F0F1F2;border-bottom:1px solid var(--line2)}
+.tcard.picked{border-color:rgba(52,211,153,.6);box-shadow:0 0 0 1px rgba(52,211,153,.45),var(--sh)}
+.thumb{position:relative;aspect-ratio:16/9;background:#0B0E12;border-bottom:1px solid var(--line2)}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.idx{position:absolute;top:9px;right:9px;background:rgba(14,16,18,.82);color:#fff;font-size:11px;
+.idx{position:absolute;top:9px;right:9px;background:rgba(8,10,13,.85);color:#fff;font-size:11px;
   font-weight:700;padding:2px 8px;border-radius:6px;direction:ltr;backdrop-filter:blur(4px)}
 .lvl{position:absolute;bottom:9px;left:9px;display:inline-flex;align-items:center;gap:5px;
   background:rgba(255,255,255,.94);color:#243038;font-size:10.5px;font-weight:600;
@@ -228,16 +223,16 @@ EXTRA = """
 .chip.ref{background:var(--soft);color:var(--muted);border:1px solid var(--line2)}
 .tags{display:flex;gap:4px;flex-wrap:wrap}
 .tags i{font-style:normal;font-size:9.5px;color:var(--faint);background:var(--soft);padding:2px 7px;border-radius:5px}
-.pick{margin-inline-start:auto;border:1px solid var(--line);background:#fff;color:var(--muted);
+.pick{margin-inline-start:auto;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);
   border-radius:7px;padding:4px 11px;font-size:11px;font-family:inherit;cursor:pointer;transition:.14s;font-weight:600}
-.pick:hover{background:var(--fg);color:#fff;border-color:var(--fg)}
-.tcard.picked .pick{background:#15A05E;border-color:#15A05E;color:#fff}
+.pick:hover{background:rgba(47,128,255,.18);color:#fff;border-color:rgba(47,128,255,.5)}
+.tcard.picked .pick{background:rgba(52,211,153,.2);border-color:rgba(52,211,153,.6);color:#6EE7B7}
 @media(max-width:520px){.tgrid{grid-template-columns:1fr}}
 
 html.view-list .tgrid{grid-template-columns:1fr}
 html.view-list .tcard{display:grid;grid-template-columns:300px minmax(0,1fr)}
 html.view-list .thumb{aspect-ratio:auto;height:100%;min-height:190px;
-  border-bottom:0;border-inline-end:1px solid var(--line2);background:#F2F3F4}
+  border-bottom:0;border-inline-end:1px solid var(--line2);background:#0B0E12}
 html.view-list .thumb img{object-fit:contain}
 html.view-list .tbody{border-top:0}
 html.view-list .tcard:hover{transform:none}
@@ -251,14 +246,14 @@ html.view-list .tcard:hover{transform:none}
 .thumb{display:block;overflow:hidden}
 .thumb{position:relative}
 .clipbtn{position:absolute;inset-inline-start:9px;bottom:9px;width:26px;height:26px;border-radius:7px;
-  background:rgba(14,16,18,.72);color:#fff;border:0;display:grid;place-items:center;
-  cursor:pointer;backdrop-filter:blur(6px);transition:.15s;z-index:3}
-.clipbtn:hover{background:rgba(14,16,18,.92)}
-.tcard.playing .clipbtn{background:var(--accent)}
+  background:rgba(8,10,13,.75);color:#fff;border:0;display:grid;place-items:center;
+  cursor:pointer;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.12);transition:.15s;z-index:3}
+.clipbtn:hover{background:rgba(8,10,13,.95)}
+.tcard.playing .clipbtn{background:linear-gradient(180deg,#3D8BFF,#2069E8)}
 .tcard.playing .clipbtn svg{display:none}
 .tcard.playing .clipbtn:after{content:"";width:7px;height:7px;border-radius:2px;background:#fff}
 .src{position:absolute;top:9px;left:9px;z-index:3;font-size:9.5px;font-weight:700;
-  padding:2px 6px;border-radius:5px;background:rgba(255,255,255,.9);color:#3A4449;
+  padding:2px 6px;border-radius:5px;background:rgba(255,255,255,.92);color:#1B2430;
   direction:ltr;letter-spacing:.02em;opacity:0;transition:.15s}
 .tcard:hover .src,.tcard.playing .src{opacity:1}
 .gvideo{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--faint);
@@ -345,8 +340,7 @@ JS = """
 
 html = head("کاتالوگ ۳۰ سبک گرافیکی موشن", EXTRA) + topbar("catalog") + \
   f'<div class="shell">{SIDEBAR}<main class="content">{CONTENT}</main>{RAIL}</div>' + \
-  f'''<footer class="site">۳۰ سبک گرافیکی · ۱۳ نمونه‌ی ساخته‌شده · ۱۷ تصویر مرجع</footer>
-<script>{JS}{JS_VIDEO}</script>
+  footer() + f'''<script>{JS}{JS_VIDEO}</script>
 </body></html>'''
 open("کاتالوگ-۳۰-سبک.html","w").write(html)
 print("catalog:", round(len(html)/1024/1024,2), "MB")
