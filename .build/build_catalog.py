@@ -2,7 +2,7 @@
 import json, sys
 sys.path.insert(0,".build")
 from design import head, topbar, toolbar, side_item, ICONS, CHEV, footer
-from vids import clip as VCLIP, poster as VPOST, info as VINFO
+from vids import clip as VCLIP, poster as VPOST, has as VHAS, source as VSRC
 
 imgs = json.load(open(".build/imgs.json"))
 BIG  = {int(k):v for k,v in imgs["big"].items()}
@@ -52,18 +52,17 @@ def card(s):
     tagh="".join(f"<i>{t}</i>" for t in tags)
     badge = (f'<a class="chip ok" href="previews/{bfile}" target="_blank" rel="noopener" '
              f'title="رندر خودمان با Remotion">نمونه‌ی ساخته‌شده ↗</a>'
-             if bfile else '<span class="chip ref">کلیپ مرجع</span>')
+             if bfile else '<span class="chip ref">بدون نمونه</span>')
     return f'''
     <article class="tcard" data-g="{fa}" data-en="{en}" data-diff="{dc}" data-built="{'1' if bfile else '0'}"
              data-tags="{' '.join(tags)}" data-best="{best}" data-n="{n}">
-      <div class="thumb">
-        <video class="clip" muted loop playsinline preload="none" poster="{VPOST(n)}"
+      <div class="thumb{' novid' if not VHAS(n) else ''}">
+        {f'''<video class="clip" muted loop playsinline preload="none" poster="{VPOST(n)}"
                data-src="{VCLIP(n)}" aria-label="کلیپ نمونه‌ی سبک {fa}"></video>
-        <button class="clipbtn" aria-label="پخش کلیپ {fa}"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <button class="clipbtn" aria-label="پخش کلیپ {fa}"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>''' if VHAS(n) else f'''<img src="data:image/jpeg;base64,{TINY[n]}" alt="{fa}">'''}
         <span class="idx">{n:02d}</span>
         <span class="lvl {dc}"><i></i>{dn}</span>
-        <a class="src" href="{VINFO(n)['url']}" target="_blank" rel="noopener"
-           title="{VINFO(n)['desc']}">منبع ↗</a>
+        {f'''<a class="src" href="{VSRC(n)}" target="_blank" rel="noopener" title="دانلود رندر کامل">رندر ما ↗</a>''' if VHAS(n) else ''}
       </div>
       <div class="tbody">
         <div class="thead">
@@ -241,6 +240,11 @@ html.view-list .tcard:hover{transform:none}
     border-inline-end:0;border-bottom:1px solid var(--line2)}}
 
 /* ---- کلیپ نمونه در کارت ---- */
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.novid img{filter:grayscale(.55) contrast(.92);opacity:.75}
+.thumb.novid:after{content:"بدون نمونه‌ی رندرشده";position:absolute;inset:auto 0 0 0;
+  padding:5px 8px;font-size:10px;color:#C7D2DE;background:linear-gradient(0deg,rgba(6,8,11,.9),transparent);
+  text-align:center}
 .thumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   display:block;background:#0B0C0D;z-index:1}
 .thumb{display:block;overflow:hidden}

@@ -2,11 +2,11 @@
 import sys, json
 sys.path.insert(0,".build")
 from design import head, topbar, ICONS, CHEV, footer
-from vids import clip as VCLIP, poster as VPOST
+from vids import clip as VCLIP, poster as VPOST, has as VHAS
 import asdata as A
 
 imgs = json.load(open(".build/imgs.json"))["tiny"]
-PICK = [1, 7, 16, 24]
+PICK = [1, 11, 16, 26]
 thumbs = "".join(
     f'<a class="mini" href="کاتالوگ-۳۰-سبک.html" title="سبک {i:02d}">'
     f'<video muted loop playsinline preload="none" poster="{VPOST(i)}" data-src="{VCLIP(i)}"></video>'

@@ -297,7 +297,6 @@ def topbar(active):
         ("guide",   "راهنمای ساخت",    "آموزش-ساخت-موشن.html",     None),
         ("catalog", "۳۰ سبک گرافیکی",  "کاتالوگ-۳۰-سبک.html",      None),
         ("styles",  "۳۹ سبک کدی",      "۳۹-سبک-کدی.html",          "جدید"),
-        ("report",  "گزارش تحقیق",     "گزارش-سبک‌ها-و-ابزارهای-موشن.md", None),
     ]
     nav = f'''
       <details class="navdrop">
@@ -307,7 +306,6 @@ def topbar(active):
           <a href="آموزش-ساخت-موشن.html">راهنمای ساخت <span class="k">G</span></a>
           <a href="کاتالوگ-۳۰-سبک.html">کاتالوگ ۳۰ سبک <span class="k">C</span></a>
           <a href="۳۹-سبک-کدی.html">۳۹ سبک کدی <span class="k">S</span></a>
-          <a href="گزارش-سبک‌ها-و-ابزارهای-موشن.md">گزارش و منابع <span class="k">R</span></a>
         </div>
       </details>'''
     for key, label, href, badge in links:
